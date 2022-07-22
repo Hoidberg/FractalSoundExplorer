@@ -16,6 +16,7 @@ static const int window_w_init = 1280;
 static const int window_h_init = 720;
 static const int starting_fractal = 0;
 static const int max_iters = 1200;
+static const double pi = 3.14159;
 static const double escape_radius_sq = 1000.0;
 static const char window_name[] = "Fractal Sound Explorer";
 
@@ -112,12 +113,9 @@ void chirikov(double& x, double& y, double cx, double cy) {
   y += cy*std::sin(x);
   x += cx*y;
 }
-void exponential(double& x, double& y, double cx, double cy) {
-  std::complex<double> z(x, y);
-  std::complex<double> c(cx, cy);
-  z = std:exp(z) + c 
-  x = z.real();
-  y = z.imag();
+void kaplanYorke(double& x, double& y, double cx, double cy) {
+  x = (2 * x) % 1
+  y = (0.2 * y) + std::cos(4 * pi * x)
 }
 
 //List of fractal equations
@@ -130,7 +128,7 @@ static const Fractal all_fractals[] = {
   duffing,
   ikeda,
   chirikov,
-  exponential,
+  kaplanYorke,
 };
 
 //Synthesizer class to inherit Windows Audio.
@@ -249,7 +247,7 @@ public:
 
       //Cosine interpolation
       double t = double(j) / double(steps);
-      t = 0.5 - 0.5*std::cos(t * 3.1415926535);
+      t = 0.5 - 0.5*std::cos(t * pi);
       double wx = t*dx + (1.0 - t)*dpx;
       double wy = t*dy + (1.0 - t)*dpy;
 
@@ -586,7 +584,7 @@ int main(int argc, char *argv[]) {
         "  6 - Duffing Map\n"
         "  7 - Ikeda Map\n"
         "  8 - Chirikov Map\n"
-        "  9 - Exponential Map\n"
+        "  9 - Kaplan–Yorke Map\n"
       );
       helpMenu.setPosition(20.0f, 20.0f);
       window.draw(helpMenu);
