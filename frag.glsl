@@ -83,6 +83,9 @@ VEC2 chirikov(VEC2 z, VEC2 c) {
   z.x += c.x*z.y;
   return z;
 }
+VEC2 exponential(VEC2 z, VEC2 c) {
+  return cx_exp(z) + c
+}
 
 #if 1
 #define DO_LOOP(name) \
@@ -116,6 +119,7 @@ vec3 fractal(VEC2 z, VEC2 c) {
     case 5: DO_LOOP(duffing); break;
     case 6: DO_LOOP(ikeda); break;
     case 7: DO_LOOP(chirikov); break;
+    case 8: DO_LOOP(exponential): break;
   }
 
   if (i != iIters) {
