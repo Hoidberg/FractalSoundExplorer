@@ -112,6 +112,12 @@ void chirikov(double& x, double& y, double cx, double cy) {
   y += cy*std::sin(x);
   x += cx*y;
 }
+void exponential(double& x, double& y, double cx, double cy) {
+  double nx = std::sin(x) + cx;
+  double ny = std::cos(y) + cy;
+  x = nx;
+  y = ny;
+}
 
 //List of fractal equations
 static const Fractal all_fractals[] = {
@@ -123,6 +129,7 @@ static const Fractal all_fractals[] = {
   duffing,
   ikeda,
   chirikov,
+  exponential,
 };
 
 //Synthesizer class to inherit Windows Audio.
@@ -241,7 +248,7 @@ public:
 
       //Cosine interpolation
       double t = double(j) / double(steps);
-      t = 0.5 - 0.5*std::cos(t * 3.14159);
+      t = 0.5 - 0.5*std::cos(t * 3.1415926535897932384626433);
       double wx = t*dx + (1.0 - t)*dpx;
       double wy = t*dy + (1.0 - t)*dpy;
 
@@ -574,10 +581,11 @@ int main(int argc, char *argv[]) {
         "  2 - Burning Ship\n"
         "  3 - Feather Fractal\n"
         "  4 - SFX Fractal\n"
-        "  5 - Hénon Map\n"
+        "  5 - HÃ©non Map\n"
         "  6 - Duffing Map\n"
         "  7 - Ikeda Map\n"
         "  8 - Chirikov Map\n"
+        "  9 - Exponential Map\n"
       );
       helpMenu.setPosition(20.0f, 20.0f);
       window.draw(helpMenu);
