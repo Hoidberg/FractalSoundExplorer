@@ -113,10 +113,11 @@ void chirikov(double& x, double& y, double cx, double cy) {
   x += cx*y;
 }
 void exponential(double& x, double& y, double cx, double cy) {
-  double nx = std::sin(x) + cx;
-  double ny = std::cos(y) + cy;
-  x = nx;
-  y = ny;
+  std::complex<double> z(x, y);
+  std::complex<double> c(cx, cy);
+  z = std:exp(z) + c 
+  x = z.real();
+  y = z.imag();
 }
 
 //List of fractal equations
@@ -248,7 +249,7 @@ public:
 
       //Cosine interpolation
       double t = double(j) / double(steps);
-      t = 0.5 - 0.5*std::cos(t * 3.1415926535897932384626433);
+      t = 0.5 - 0.5*std::cos(t * 3.1415926535);
       double wx = t*dx + (1.0 - t)*dpx;
       double wy = t*dy + (1.0 - t)*dpy;
 
