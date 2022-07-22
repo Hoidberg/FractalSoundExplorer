@@ -16,7 +16,7 @@ static const int window_w_init = 1280;
 static const int window_h_init = 720;
 static const int starting_fractal = 0;
 static const int max_iters = 1200;
-static const double pi = 3.141592653;
+static const double pi = 3.14159265358979323846;
 static const double escape_radius_sq = 1000.0;
 static const char window_name[] = "Fractal Sound Explorer";
 
