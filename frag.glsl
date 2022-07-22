@@ -84,8 +84,9 @@ VEC2 chirikov(VEC2 z, VEC2 c) {
   return z;
 }
 VEC2 kaplanYorke(VEC2 z, VEC2 c) {
-  z.x = (2 * z.x) % 1
-  z.y = (0.2 * z.y) + cos(4 * PI * z.x)
+  z.x = (2 * z.x) % 1;
+  z.y = (0.2 * z.y) + cos(4 * PI * z.x);
+  return z;
 }
 
 #if 1
