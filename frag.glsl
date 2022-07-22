@@ -83,8 +83,9 @@ VEC2 chirikov(VEC2 z, VEC2 c) {
   z.x += c.x*z.y;
   return z;
 }
-VEC2 exponential(VEC2 z, VEC2 c) {
-  return cx_exp(z) + c
+VEC2 kaplanYorke(VEC2 z, VEC2 c) {
+  z.x = (2 * z.x) % 1
+  z.y = (0.2 * z.y) + cos(4 * PI * z.x)
 }
 
 #if 1
@@ -119,7 +120,7 @@ vec3 fractal(VEC2 z, VEC2 c) {
     case 5: DO_LOOP(duffing); break;
     case 6: DO_LOOP(ikeda); break;
     case 7: DO_LOOP(chirikov); break;
-    case 8: DO_LOOP(exponential): break;
+    case 8: DO_LOOP(kaplanYorke): break;
   }
 
   if (i != iIters) {
